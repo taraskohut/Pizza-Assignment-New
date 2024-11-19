@@ -1,0 +1,4 @@
+<div
+  style="">
+  <router-outlet></router-outlet>
+</div>

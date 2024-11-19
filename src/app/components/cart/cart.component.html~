@@ -1,0 +1,23 @@
+<mat-card style="padding: 60px">
+  <h2>Your Cart</h2>
+
+  <div *ngIf="cartItems$ | async as cartItems">
+    <div *ngFor="let item of cartItems">
+      <p>
+        {{ item.pizza.name }} - Quantity: {{ item.quantity }} - Price:
+        {{ item.pizza.price * item.quantity | currency }}
+      </p>
+    </div>
+
+    <hr />
+    <p>Subtotal: {{ (totals$ | async)?.subtotal | currency }}</p>
+    <p>Tax: {{ (totals$ | async)?.tax | currency }}</p>
+    <p>Total: {{ (totals$ | async)?.total | currency }}</p>
+    <button mat-fab (click)="toConfirmationPage()" >Confirm order</button>
+  </div>
+
+  <div *ngIf="!(cartItems$ | async)?.length">
+    <p>Your cart is empty.</p>
+  </div>
+
+</mat-card>

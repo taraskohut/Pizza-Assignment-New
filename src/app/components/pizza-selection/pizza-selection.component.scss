@@ -1,0 +1,41 @@
+.example-card {
+  max-width: 25vw;
+  width: 100%;
+  margin: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+h3 {
+  margin: 0;
+}
+
+
+.pizza-select-container {
+  width: 90vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.button-confirm{
+  width: 90vw;
+  position: fixed;
+  bottom: 20px;
+  z-index: 1000;
+}
+.action-position {
+  display: flex;
+  justify-content: space-around;
+}
+
+img {
+  width: 100%
+}

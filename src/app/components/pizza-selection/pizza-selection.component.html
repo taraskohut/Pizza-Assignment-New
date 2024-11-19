@@ -1,0 +1,42 @@
+<div class="pizza-select-container" *ngIf="(filteredPizzas$ | async)?.length; else noPizzas">
+
+  @for (pizza of (filteredPizzas$ | async) ?? []; track trackById; let i = $index) {
+
+    <mat-card
+
+       class="example-card" appearance="outlined">
+
+      <img mat-card-image [src]="pizza.image_url" alt="" >
+      <div>
+      <mat-card-header>
+        <mat-card-title >{{ pizza.name }}</mat-card-title>
+        <mat-card-subtitle>Price: {{ pizza.price }}$</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>
+          {{ pizza.description }}
+        </p>
+      </mat-card-content>
+      <br>
+      <mat-card-actions class="action-position">
+        <button mat-fab color="secondary" (click)="removeFromCart(pizza)">
+          <mat-icon>remove</mat-icon>
+        </button>
+        <h3>{{ getPizzaQuantity(pizza) | async }}</h3>
+        <button color="secondary" mat-fab (click)="addToCart(pizza)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-card-actions>
+      </div>
+    </mat-card>
+  }
+  <button class="button-confirm" *ngIf="(cartItems$ | async)?.length" mat-fab
+          (click)="confirmSelection()">Confirm Order
+  </button>
+</div>
+
+
+<ng-template #noPizzas>
+  <p>No pizzas available for the selected pizzeria.</p>
+</ng-template>

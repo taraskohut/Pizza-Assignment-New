@@ -1,0 +1,25 @@
+<mat-card class="pizzerias-card radio-container">
+  @for (pizzeria of pizzerias$ | async; track trackById; let i = $index) {
+    <input [checked]="(selectedPizzeria$ | async)?.name === pizzeria.name"
+           [id]="pizzeria.name"
+           name="radio"
+           type="radio"
+           (click)="onSelectPizzeria(pizzeria)"/>
+    <label [for]="pizzeria.name">
+      <h4>{{ pizzeria.name }}</h4>
+      <h5>{{ pizzeria.address }}</h5>
+    </label>
+  }
+  <div class="glider-container">
+    <div class="glider">
+      <div class="gotToPizza" *ngIf="selectedPizzeria$ | async as selected"  >
+        <button mat-fab (click)="goToPizzaSelection()">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="local_pizza"> </mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+
+
